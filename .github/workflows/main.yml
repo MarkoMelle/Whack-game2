@@ -16,16 +16,16 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install 🔧
-        run: npm install
+        run: yarn install
 
       - name: Eslint 🪧
-        run: npm run lint
+        run: yarn lint
         
       - name: Run Test 🔨
-        run: npm run test
+        run: yarn test
         
       - name: Build 👷
-        run: npm run build
+        run: yarn build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

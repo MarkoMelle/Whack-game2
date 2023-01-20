@@ -1,20 +1,20 @@
 export default class Interval {
-   constructor() {
+  intervalInit(gamePlay, gameControll) {
+    this.gamePlay = gamePlay;
+    this.gameControll = gameControll;
+    this.interval = setInterval(() => {
+      this.gamePlay.moveToRandomCell(this.gamePlay.cells.length);
+      this.gameControll.losePoint += 1;
+      if (this.gameControll.losePoint >= 5) {
+        this.gamePlay.gameOver.classList.remove('hidden');
+        clearInterval(this.interval);
+        this.gamePlay.cellClickListeners = [];
+      }
+      this.gamePlay.losePoint.textContent = this.gameControll.losePoint;
+    }, 1000);
+  }
 
-   }
-
-   intervalInit(gamePlay,gameControll) {
-      this.gamePlay = gamePlay
-      this.gameControll = gameControll;
-      setInterval(() => {
-         this.gameplay.moveToRandomCell(this.gameplay.cells.length);
-         this.gameControll.losePoint += 1
-         if (this.gameControll.losePoint >= 5) {
-            this.gameplay.gameOver.classList.remove('hidden')
-            clearInterval(this.gameControll.interval);
-            this.gameplay.cellClickListeners = []
-         }
-         this.gameplay.losePoint.textContent = this.losePoint;
-      }, 1000);
-   }
+  clear() {
+    clearInterval(this.interval);
+  }
 }

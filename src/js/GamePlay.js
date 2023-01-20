@@ -5,7 +5,7 @@ export default class GamePlay {
     this.boardEl = null;
     this.cellIndex = null;
     this.cells = [];
-    this.cellClickListeners = []
+    this.cellClickListeners = [];
   }
 
   bindToDOM(container) {
@@ -33,7 +33,7 @@ export default class GamePlay {
     this.point = this.container.querySelector('.point');
     this.losePoint = this.container.querySelector('.losePoint');
     this.boardEl = this.container.querySelector('[data-id=board]');
-    this.gameOver = this.container.querySelector('.game-over')
+    this.gameOver = this.container.querySelector('.game-over');
 
     for (let i = 0; i < this.boardSize ** 2; i += 1) {
       const cellEl = document.createElement('div');
@@ -54,12 +54,11 @@ export default class GamePlay {
       }
     };
     getRandom();
-    if (this.currentCell) { this.currentCell.classList.remove('goblin') }
-    this.currentCell = this.cells[this.cellIndex]
+    if (this.currentCell) { this.currentCell.classList.remove('goblin'); }
+    this.currentCell = this.cells[this.cellIndex];
     this.currentCell.classList.add('goblin');
     // console.log(new Date())
   }
-
 
   addCellClickListener(callback) {
     this.cellClickListeners.push(callback);
@@ -69,5 +68,4 @@ export default class GamePlay {
     const index = this.cells.indexOf(event.currentTarget);
     this.cellClickListeners.forEach((o) => o.call(null, index));
   }
-
 }

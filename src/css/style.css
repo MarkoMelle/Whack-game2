@@ -25,6 +25,8 @@
   width: 15vh;
   height: 15vh; 
   background-color: blue;
+  font-size: 12vh;
+  text-align: center;
 }
 
 .goblin {
